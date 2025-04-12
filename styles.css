@@ -1,0 +1,445 @@
+body {
+    background-color: #1a1a2e;
+    color: white;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 20px;
+    min-height: 100vh;
+}
+
+/* =============== STYLE PAGE QUIZ =============== */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #2d3b55;
+}
+
+#user-info {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+#user-info button {
+    background: #e63946;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+#user-info button:hover {
+    background: #c1121f;
+}
+
+.quiz-container {
+    background-color: #16213e;
+    border-radius: 10px;
+    padding: 25px;
+    max-width: 600px;
+    margin: 0 auto;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.progress-bar {
+    height: 10px;
+    background-color: #0f3460;
+    border-radius: 5px;
+    margin-bottom: 25px;
+    overflow: hidden;
+}
+
+.progress {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(90deg, #4cc9f0, #4361ee);
+    transition: width 0.5s ease;
+}
+
+#question {
+    font-size: 1.4rem;
+    margin-bottom: 25px;
+    color: white;
+    text-align: center;
+    line-height: 1.4;
+}
+
+#answers-container {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 25px;
+}
+
+.answer {
+    background-color: #4361ee;
+    color: white;
+    border: none;
+    padding: 15px;
+    border-radius: 8px;
+    font-size: 1rem;
+    text-align: left;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.answer:hover {
+    background-color: #3a56d4;
+    transform: translateY(-2px);
+}
+
+.answer:active {
+    transform: translateY(0);
+}
+
+.answer.correct {
+    background-color: #4cc9f0;
+    color: white;
+}
+
+.answer.incorrect {
+    background-color: #f72585;
+    color: white;
+}
+
+#timer {
+    font-size: 1.2rem;
+    color: #f8f9fa;
+    text-align: center;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+.timer-warning {
+    color: #f72585 !important;
+    animation: pulse 0.5s infinite alternate;
+}
+
+@keyframes pulse {
+    from { opacity: 1; }
+    to { opacity: 0.7; }
+}
+
+#next-btn, #restart-btn {
+    background-color: #4cc9f0;
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 8px;
+    font-size: 1rem;
+    margin: 10px auto;
+    display: block;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+#next-btn:hover, #restart-btn:hover {
+    background-color: #3aa8d8;
+}
+
+#next-btn {
+    display: none;
+}
+
+#restart-btn {
+    background-color: #7209b7;
+    display: none;
+}
+
+#restart-btn:hover {
+    background-color: #5a08a0;
+}
+
+.explanation {
+    background-color: rgba(76, 201, 240, 0.1);
+    color: #a8dadc;
+    padding: 15px;
+    border-radius: 8px;
+    margin-top: 20px;
+    border-left: 4px solid #4cc9f0;
+}
+
+@media (max-width: 600px) {
+    .quiz-container {
+        padding: 15px;
+    }
+    
+    #question {
+        font-size: 1.2rem;
+    }
+    
+    .answer {
+        padding: 12px;
+    }
+}
+
+/* =============== STYLE PAGE INSCRIPTION/CONNEXION =============== */
+#auth-container {
+    background-color: #16213e;
+    border-radius: 10px;
+    padding: 30px;
+    width: 90%;
+    max-width: 500px;
+    margin: 50px auto;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    border: 1px solid #2d3b55;
+}
+
+#auth-container h1 {
+    color: #4cc9f0;
+    text-align: center;
+    margin-bottom: 25px;
+    font-size: 2.2rem;
+}
+
+#login-form, #register-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+#login-form input, 
+#register-form input {
+    background-color: rgba(15, 23, 42, 0.7);
+    border: 2px solid #2d3b55;
+    color: white;
+    padding: 15px;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: all 0.3s;
+}
+
+#login-form input:focus, 
+#register-form input:focus {
+    border-color: #4cc9f0;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(76, 201, 240, 0.2);
+}
+
+#login-form button, 
+#register-form button {
+    background: linear-gradient(135deg, #4361ee 0%, #3a56d4 100%);
+    color: white;
+    border: none;
+    padding: 15px;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+    margin-top: 10px;
+}
+
+#login-form button:hover, 
+#register-form button:hover {
+    background: linear-gradient(135deg, #3a56d4 0%, #2f46b9 100%);
+    transform: translateY(-2px);
+}
+
+#login-form p, 
+#register-form p {
+    text-align: center;
+    color: #a8dadc;
+    margin-top: 20px;
+}
+
+#login-form a, 
+#register-form a {
+    color: #4cc9f0;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s;
+}
+
+#login-form a:hover, 
+#register-form a:hover {
+    color: #3aa8d8;
+    text-decoration: underline;
+}
+
+.error-message {
+    color: #f72585;
+    background-color: rgba(247, 37, 133, 0.1);
+    padding: 12px;
+    border-radius: 8px;
+    text-align: center;
+    border-left: 4px solid #f72585;
+    margin-top: 15px;
+    animation: fadeIn 0.3s ease;
+}
+
+/* Animation pour les messages d'erreur */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Responsive */
+@media (max-width: 500px) {
+    #auth-container {
+        padding: 25px 15px;
+        margin: 20px auto;
+    }
+    
+    #auth-container h1 {
+        font-size: 1.8rem;
+    }
+    
+    #login-form input, 
+    #register-form input,
+    #login-form button, 
+    #register-form button {
+        padding: 12px;
+    }
+}
+
+/* Style du profil */
+#profile-section {
+    background-color: #16213e;
+    padding: 25px;
+    border-radius: 10px;
+    max-width: 800px;
+    margin: 20px auto;
+    color: white;
+}
+
+.profile-stats {
+    display: flex;
+    gap: 20px;
+    margin: 20px 0;
+}
+
+.stat-card {
+    background: rgba(76, 201, 240, 0.1);
+    padding: 15px;
+    border-radius: 8px;
+    flex: 1;
+    text-align: center;
+    border-left: 4px solid #4cc9f0;
+}
+
+.stat-card h3 {
+    margin-top: 0;
+    color: #a8dadc;
+}
+
+#quiz-history {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+}
+
+#quiz-history th, 
+#quiz-history td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #2d3b55;
+}
+
+#quiz-history th {
+    background-color: #0f3460;
+}
+
+#view-profile-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: #7209b7;
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 50px;
+    cursor: pointer;
+    z-index: 100;
+}
+
+.quiz-progress {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.progress-bar {
+    flex-grow: 1;
+    height: 8px;
+    background-color: #e0e0e0;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(90deg, #4cc9f0, #4361ee);    
+    transition: width 0.3s ease;
+}
+
+.progress-text {
+    font-size: 0.9rem;
+    color: #4361ee;
+    font-weight: bold;
+    min-width: 100px;
+    text-align: right;
+}
+
+/* Animation d'apparition des questions */
+#question {
+    animation: fadeIn 0.5s ease-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.answer {
+    animation: fadeIn 0.5s ease-out;
+    animation-fill-mode: backwards;
+}
+
+/* Délai progressif pour chaque réponse */
+.answer:nth-child(1) { animation-delay: 0.1s; }
+.answer:nth-child(2) { animation-delay: 0.2s; }
+.answer:nth-child(3) { animation-delay: 0.3s; }
+.answer:nth-child(4) { animation-delay: 0.4s; }
+
+.progress-bar:hover .progress-fill {
+    box-shadow: 0 0 5px rgba(67, 97, 238, 0.5);
+}
+
+/* Quand le quiz est fini */
+.quiz-ended .progress-fill {
+    background: linear-gradient(90deg, #4cc9f0, #2ecc71);
+}
+
+.quiz-ended .progress-text {
+    color: #2ecc71;
+}
+
+/* Styles pour les questions ouvertes */
+#open-answer {
+    padding: 12px;
+    width: 100%;
+    margin-bottom: 10px;
+    border: 2px solid #4361ee;
+    border-radius: 8px;
+}
+
+/* Feedback */
+.correct-feedback {
+    color: #2ecc71;
+    margin-top: 15px;
+    font-weight: bold;
+}
+
+.incorrect-feedback {
+    color: #e74c3c;
+    margin-top: 15px;
+    font-weight: bold;
+}
